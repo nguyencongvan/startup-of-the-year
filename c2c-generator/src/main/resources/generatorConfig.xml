@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <!-- oracle lib location -->
+    <classPathEntry location="D:\app\demo\c2c-generator\lib\postgresql-42.2.20.jar" />
+    <context id="DB2Tables" targetRuntime="MyBatis3">
+
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin">
+            <property name="useToStringFromRoot" value="true" />
+        </plugin>
+        <plugin type="org.mybatis.generator.plugins.EqualsHashCodePlugin">
+            <property name="useEqualsHashCodeFromRoot " value="true" />
+        </plugin>
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+        <plugin type="org.mybatis.generator.plugins.CaseInsensitiveLikePlugin" />
+
+        <!--		<plugin type="com.xxg.mybatis.plugins.MySQLLimitPlugin"></plugin>-->
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <!-- oracle URL、username、password -->
+        <jdbcConnection driverClass="org.postgresql.Driver"
+                        connectionURL="jdbc:postgresql://ec2-3-214-136-47.compute-1.amazonaws.com:5432/d53qg4vcgutvtr"
+                        userId="hcsvsjtydcocin"
+                        password="6db433538131bb2e4d34174fdddb1930263efd61ea6ca8009dd2fb0ea4483c3d">
+            <property name="remarksReporting" value="true"></property>
+        </jdbcConnection>
+
+
+        <!--        #server.port=5432-->
+        <!--        spring.jpa.database=POSTGRESQL-->
+        <!--        spring.datasource.url=jdbc:postgresql://ec2-3-214-136-47.compute-1.amazonaws.com:5432/d53qg4vcgutvtr-->
+        <!--        spring.datasource.username= hcsvsjtydcocin-->
+        <!--        spring.datasource.password= 6db433538131bb2e4d34174fdddb1930263efd61ea6ca8009dd2fb0ea4483c3d-->
+        <!--        spring.datasource.driver-class-name= org.postgresql.Driver-->
+        <!--        spring.jpa.database-platform = postgres-->
+        <!--        spring.jpa.generate-ddl= true-->
+        <!--        spring.jpa.hibernate.ddl-auto = update-->
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false" />
+        </javaTypeResolver>
+
+        <!-- model package and location -->
+        <javaModelGenerator targetPackage="com.example.web.model" targetProject="../c2c-common/src/main/java">
+            <property name="enableSubPackages" value="true" />
+            <property name="trimStrings" value="true" />
+        </javaModelGenerator>
+        <!-- mapping package and location -->
+        <sqlMapGenerator targetPackage="com.example.web.persistence" targetProject="../c2c-common/src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </sqlMapGenerator>
+        <!-- dao package and location -->
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.example.web.persistence" targetProject="../c2c-common/src/main/java">
+            <property name="enableSubPackages" value="true" />
+        </javaClientGenerator>
+
+        <table tableName="accounts" domainObjectName="Accounts" enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true" enableSelectByExample="true" selectByExampleQueryId="true">
+            <generatedKey column="user_id" sqlStatement="JDBC" identity="true"/>
+        </table>
+
+    </context>
+</generatorConfiguration>
