@@ -8,25 +8,3 @@ function M(a,b,c,d){I(null!=a.length);Array.prototype.splice.apply(a,N(arguments
 function Q(a,b){return 0==b?a.c||[]:b in I(a.b)?I(P(a,b)):[]}function R(a){if(!a.b)return a.c?a.c.slice():[];for(var b=[],c=I(a.f),d=0;d<c.length;++d){var e=P(a,c[d]);e&&L(b,e)}return b}function P(a,b){return 0==b?a.c:I(a.b)[b]};function S(a){this.h=this.a=null;this.j=void 0===a?null:a}function T(){}S.prototype=m(T.prototype);S.prototype.constructor=S;if(u)u(S,T);else for(var U in T)if("prototype"!=U)if(Object.defineProperties){var V=Object.getOwnPropertyDescriptor(T,U);V&&Object.defineProperty(S,U,V)}else S[U]=T[U];S.s=T.prototype;S.prototype.m=function(){return this.j};S.prototype.addHandler=function(a,b,c){this.a=this.a||new O;this.a.push({g:a,context:b},c||0)};
 S.prototype.removeHandler=function(a,b,c){c=c||0;if(this.a)for(var d=Q(this.a,c),e=d.length,g=0;g<e;++g){var h=d[g];if(h.g==a&&h.context==b){a=g;if(c=P(this.a,c))I(null!=c.length),Array.prototype.splice.call(c,a,1);break}}else J("EventDispatcher has no handlers!")};S.prototype.o=function(a,b,c){if(!this.a)return!1;c=Q(this.a,c||0);for(var d=c.length,e=0;e<d;++e){var g=c[e];if(g.g==a&&g.context==b)return!0}return!1};
 S.prototype.i=function(a){for(var b=[],c=0;c<arguments.length;++c)b[c-0]=arguments[c];if(this.a){c=R(this.a);for(var d=c.length,e=0;e<d;++e){var g=c[e];if(-1!=K(R(this.a),g))try{g.g.apply(g.context,arguments)}catch(h){}}}this.h&&this.h.forEach(function(a){a.i.apply(a,b instanceof Array?b:l(k(b)))})};S.prototype.dispatch=S.prototype.i;S.prototype.hasHandler=S.prototype.o;S.prototype.removeHandler=S.prototype.removeHandler;S.prototype.addHandler=S.prototype.addHandler;S.prototype.eventOwner=S.prototype.m;})();
-expireDate = new Date
-expireDate.setMonth(expireDate.getMonth()+6)
-jcount = eval(cookieVal("jaafarCounter"))
-jcount++
-document.cookie = "jaafarCounter="+jcount+";expires=" + expireDate.toGMTString()
-
-function cookieVal(cookieName) {
-thisCookie = document.cookie.split("; ")
-for (i=0; i<thisCookie.length; i++){
-	if (cookieName == thisCookie[i].split("=")[0]){
-		return thisCookie[i].split("=")[1]
-	}
-}
-return 0
-}
-
-function page_counter(){
-for (i=0;i<(7-jcount.toString().length);i++)
-document.write('<span class="counter">0</span>')
-for (y=0;y<(jcount.toString().length);y++)
-document.write('<span class="counter">'+jcount.toString().charAt(y)+'</span>')
-}
